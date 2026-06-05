@@ -1,7 +1,7 @@
 package A3;
 
 public class NumberContainer {
-    public Number[] data;
+    private Number[] data;
 
     public NumberContainer(Number[] data) {
         this.data = data;
