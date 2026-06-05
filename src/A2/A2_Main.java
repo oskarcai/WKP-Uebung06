@@ -33,7 +33,7 @@ public class A2_Main {
             if (movies[pos] instanceof AnimationMovie) return movies[pos];
             else return null;
         } else {
-            if (movies[pos] instanceof Movie) return movies[pos];
+            if (!(movies[pos] instanceof ActionMovie) && !(movies[pos] instanceof AnimationMovie)) return movies[pos];
             else return null;
         }
 
