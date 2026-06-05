@@ -6,7 +6,7 @@ public class A2_Main {
     }
 
 
-    public static void makeCatalogue(int[] a, String[] title) {
+    public static Movie[] makeCatalogue(int[] a, String[] title) {
         Movie[] movies = new Movie[a.length];
 
         for (int i = 0; i < a.length; i++) {
@@ -21,6 +21,8 @@ public class A2_Main {
                 movies[i] = new Movie(movieTitle);
             }
         }
+
+        return movies;
     }
 
     public static Movie makeOrder(Movie[] movies, int pos, int cat) {
