@@ -39,10 +39,12 @@ public class Character {
     }
 
     // für Klasse Warrior health- Getter und Setter
-    public int getHealth() {
+    /* public int getHealth() {
         return health;
     }
     public void setHealth(int health) {
         this.health = health;
     }
+
+     */
 }

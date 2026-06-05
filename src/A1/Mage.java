@@ -14,7 +14,7 @@ public class Mage extends Character {
     public void attack(Character target) {
         if (mana >= spellPower) {
             mana -= spellPower;
-            target.takeDamage(spellPower);
+            super.attack(target);
         }
     }
 
