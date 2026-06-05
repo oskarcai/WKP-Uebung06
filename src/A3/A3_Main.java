@@ -24,7 +24,14 @@ public class A3_Main {
         es trotz fehlerfreier Kompilierung zu diesem Verhalten kommt.
 
         -> Ja, der Code kompiliert. (es gibt zur Laufzeit allerdings einen Fehler)
-        -> Der Laufzeitfehler kommt dadurch, dass versucht wird einem Number-Objekt einen primitiven int zu übergeben.
+        -> Der Laufzeitfehler entsteht dadurch, das zur Laufzeit versucht wird,
+            in ein Integer[]-Array eine double-Wert einzufügen (funktioniert nicht → ArrayStoreException).
+
+            Hier kommt ein wichtiges Konzept ins Spiel: Array-Kovarianz. Das ist eigentlich der Kern von Aufgabe 3! Lass mich das kurz erklären:
+            Weil Integer eine Unterklasse von Number ist, darf ein Integer[] überall dort stehen, wo ein Number[] erwartet wird — das nennt sich Kovarianz von Arrays. Das ist wie bei Polymorphismus, nur für Arrays.
+
+            Der Haken: Der echte Typ des Arrays im Speicher bleibt Integer[]. Java merkt sich das. Wenn du nun versuchst, einen Double-Wert (3.14) hineinzuschreiben, prüft Java zur Laufzeit: "Passt ein Double in ein Integer[]?" — Nein! → ArrayStoreException.
+            Der Compiler sieht nur Number[] und sagt "passt", aber zur Laufzeit kennt Java den echten Arraytyp und blockiert den Schreibzugriff.
          */
 
         printAll(ints);
