@@ -4,18 +4,21 @@ public class Character {
     private String name;
     private int health, damage;
     private Equipment equipment;
+    private int xp;
 
     // Konstruktor 1
     public Character(String name, int health, int damage) {
         this.name = name;
         this.health = health;
         this.damage = damage;
+        this.xp = 0;
     }
     // Konstruktor 2 (überladen)
     public Character(String name, int baseHealth, int baseDamage, Equipment equipment) {
-        this.name = name;
-        this.health = baseHealth + equipment.getDefenseBonus();
-        this.damage = baseDamage + equipment.getAttackBonus();
+        this(name, baseHealth + equipment.getDefenseBonus(), baseDamage + equipment.getAttackBonus());
+        // man kann auch - analaog wie mit super(...) - den eigenen Konstruktor mit this(...) aufrufen
+        // anstatt alles einzeln zu initialisieren
+
         this.equipment = equipment;
     }
 
@@ -25,10 +28,17 @@ public class Character {
         } else {
             health = health - damage;
         }
+        // health = Math.max(0, health - damage); ginge auch
     }
 
     public void attack(Character target) {
         target.takeDamage(damage);
+    }
+
+    public void defeat(Character target) {
+        if(target.health == 0) {
+            gainXp(50);
+        }
     }
 
     // Setter
@@ -38,13 +48,13 @@ public class Character {
         damage = damage + equipment.getAttackBonus();
     }
 
-    // für Klasse Warrior health- Getter und Setter
-    /* public int getHealth() {
-        return health;
-    }
-    public void setHealth(int health) {
-        this.health = health;
+    public void gainXp(int amount) {
+        xp += amount;
     }
 
-     */
+    // Getter für XP
+    public int getXp() {
+        return xp;
+    }
+
 }

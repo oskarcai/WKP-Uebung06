@@ -18,4 +18,9 @@ public class Mage extends Character {
         }
     }
 
+    @Override
+    public void gainXp(int amount) {
+        super.gainXp(amount + 10);
+    }
+
 }
